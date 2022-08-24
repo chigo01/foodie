@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/utils/constant.dart';
-import 'package:foodie/widgets/recipecards.dart';
+import 'package:foodie/widgets/cards/recipecards.dart';
+import 'package:foodie/widgets/cards/recipecards1.dart';
+import 'package:foodie/widgets/cards/recipecards5.dart';
 import 'package:foodie/widgets/scaffold.dart';
 
 import '../models/recipe.dart';
 import '../services/service.dart';
+import 'cards/recipecards2.dart';
+import 'cards/recipecards3.dart';
+import 'cards/recipecards4.dart';
 
 class TabBarWidget extends StatefulWidget {
   TabBarWidget({Key? key}) : super(key: key);
@@ -71,16 +76,32 @@ class _TabBarWidgetState extends State<TabBarWidget>
               TabBarColor(
                 child: Padding(
                   padding: EdgeInsets.only(top: 20.0),
-                  child: RecipeCard(),
+                  child: RecipeCard1(),
                 ),
               ),
-              Icon(Icons.directions_car, size: 350),
-              Icon(Icons.directions_bike, size: 350),
-              Icon(Icons.directions_boat, size: 350),
               TabBarColor(
                 child: Padding(
                   padding: EdgeInsets.only(top: 20.0),
-                  child: RecipeCard(),
+                  child: RecipeCard2(),
+                ),
+              ),
+
+              TabBarColor(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: RecipeCard3(),
+                ),
+              ),
+              TabBarColor(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: RecipeCard4(),
+                ),
+              ),
+              TabBarColor(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: RecipeCard5(),
                 ),
               ),
             ]),
