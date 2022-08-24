@@ -3,6 +3,8 @@ import 'package:foodie/utils/constant.dart';
 import 'package:foodie/widgets/tabbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../models/recipe.dart';
+import '../services/service.dart';
 import '../widgets/textfield.dart';
 
 class ApiContents extends StatefulWidget {
@@ -14,6 +16,7 @@ class ApiContents extends StatefulWidget {
 
 class _ApiContentsState extends State<ApiContents> {
   late TextEditingController controller;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -53,16 +56,15 @@ class _ApiContentsState extends State<ApiContents> {
                       color: KfoodContainerColor,
                     ),
                   ),
-                  trailing: const CircleAvatar(
+                  trailing: CircleAvatar(
+                    backgroundColor: kbackgroundColor,
                     radius: 25,
-                    backgroundImage:
-                        AssetImage('assets/images/pexels-pixabay-415829.jpg'),
+                    backgroundImage: const AssetImage(
+                        'assets/images/pexels-pixabay-415829.jpg'),
                   ),
                 ),
                 const SizedBox(height: 20),
                 TextFieldWidget(width: width, controller: controller),
-
-
                 Expanded(
                   child: TabBarWidget(),
                 ),

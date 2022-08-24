@@ -14,20 +14,22 @@ class Recipe1 {
     required this.hits,
   });
 
-   String? q;
-   int? from;
-   int? to;
-   bool? more;
-   int? count;
+  String? q;
+  int? from;
+  int? to;
+  bool? more;
+  int? count;
   List<Hit>? hits;
 
   factory Recipe1.fromJson(Map<String, dynamic> json) => Recipe1(
-        q: json["q"] as String,
-        from: json["from"] as int,
-        to: json["to"] as int,
-        more: json["more"] as bool,
-        count: json["count"] as int,
-        hits: List<Hit>.from(json["hits"].map((x) => Hit.fromJson(x))),
+        q: json["q"] as String?,
+        from: json["from"] as int?,
+        to: json["to"] as int?,
+        more: json["more"] as bool?,
+        count: json["count"] as int?,
+        hits: json["hits"] != null
+            ? List<Hit>.from(json["hits"].map((x) => Hit.fromJson(x)))
+            : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,45 +47,54 @@ class Hit {
     required this.recipe,
   });
 
-  final Recipe recipe;
+  final Recipe? recipe;
 
   factory Hit.fromJson(Map<String, dynamic> json) => Hit(
         recipe: Recipe.fromJson(json["recipe"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "recipe": recipe.toJson(),
+        "recipe": recipe!.toJson(),
       };
 }
 
 class Recipe {
-  Recipe({
-    required this.label,
-    required this.image,
-    required this.url,
-    required this.ingredients,
-  });
+  Recipe(
+      {required this.label,
+      required this.image,
+      required this.url,
+      required this.ingredients,
+      required this.totalTime});
 
   String? label;
   String? image;
-
+  double? totalTime;
   String? url;
 
   // final List<String> ingredientLines;
-  final List<Ingredient> ingredients;
+  List<Ingredient>? ingredients;
   factory Recipe.fromJson(Map<String, dynamic> json) {
     return Recipe(
-      image: json['images'] as String,
-      label: json['label'] as String,
-      url: json['url'] as String,
-      ingredients: json['ingredients'] as List<Ingredient>,
+      image: json['image'] as String?,
+      label: json['label'] as String?,
+      url: json['url'] as String?,
+      ingredients: (json['ingredients'] as List<dynamic>?)
+          ?.map((e) => Ingredient.fromJson(e))
+          .toList(),
+      totalTime: json['totalTime'] as double?,
     );
   }
+
+  @override
+  String toString() {
+    return 'Recipe{label: $label, image: $image, url: $url, ingredients: $ingredients}';
+  }
+
   Map<String, dynamic> toJson() => {
         "label": label,
         "image": image,
         "url": url,
-        "ingredients": List<dynamic>.from(ingredients.map((x) => x.toJson())),
+        "ingredients": List<dynamic>.from(ingredients!.map((x) => x.toJson())),
       };
 }
 
@@ -95,19 +106,19 @@ class Ingredient {
     required this.image,
   });
 
-  final String text;
+  final String? text;
 
-  final String food;
+  final String? food;
 
-  final String foodCategory;
+  final String? foodCategory;
 
-  final String image;
+  final String? image;
 
   factory Ingredient.fromJson(Map<String, dynamic> json) => Ingredient(
-        text: json["text"] as String,
-        food: json["food"],
-        foodCategory: json["foodCategory"],
-        image: json["image"],
+        text: json["text"] as String?,
+        food: json["food"] as String?,
+        foodCategory: json["foodCategory"] as String?,
+        image: json["image"] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -116,4 +127,9 @@ class Ingredient {
         "foodCategory": foodCategory,
         "image": image,
       };
+
+  @override
+  String toString() {
+    return 'Ingredient{text: $text, food: $food, foodCategory: $foodCategory, image: $image}';
+  }
 }

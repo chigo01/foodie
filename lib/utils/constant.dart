@@ -24,9 +24,11 @@ var kfirstScreen1 = GoogleFonts.poppins(
     fontWeight: FontWeight.bold,
     decoration: TextDecoration.none);
 
+
 class ApiConstants {
   static String baseUrl =
       'https://tasty.p.rapidapi.com/recipes/list?rapidapi-key=';
   static String usersEndpoint =
       '557785f967msh1f431a09c7fd3d4p174d37jsn43f4514605d2';
 }
+
