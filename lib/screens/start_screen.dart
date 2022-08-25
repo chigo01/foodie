@@ -15,64 +15,66 @@ class _AppStartState extends State<AppStart> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/olenka-kotyk-9x-PwjxC0Z8-unsplash.jpg',
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/olenka-kotyk-9x-PwjxC0Z8-unsplash.jpg',
+            ),
+            fit: BoxFit.cover,
           ),
-          fit: BoxFit.cover,
         ),
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 40, left: 10),
-          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-            Row(
-              children: [
-                Text(
-                  'Healthy',
-                  style: kfirstScreen,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'food',
-                  style: kfirstScreen,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                  'is',
-                  style: kfirstScreen,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'goooood',
-                  style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      color: kyellow,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.none),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 190),
-              child: Text(
-                """More than 10,000 recipes 
-for every day and taste
-                 """,
-                style: kfirstScreen1,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 40, left: 10),
+            child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Row(
+                children: [
+                  Text(
+                    'Healthy',
+                    style: kfirstScreen,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'food',
+                    style: kfirstScreen,
+                  ),
+                ],
               ),
-            ),
-            GetStartedButton(height: height, width: width)
-          ]),
+              Row(
+                children: [
+                  Text(
+                    'is',
+                    style: kfirstScreen,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'goooood',
+                    style: GoogleFonts.poppins(
+                        fontSize: 30,
+                        color: kyellow,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.none),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 190),
+                child: Text(
+                  """More than 10,000 recipes 
+for every day and taste
+                   """,
+                  style: kfirstScreen1,
+                ),
+              ),
+              GetStartedButton(height: height, width: width)
+            ]),
+          ),
         ),
       ),
     );

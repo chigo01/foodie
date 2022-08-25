@@ -10,7 +10,7 @@ class NetworkService {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=popular&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
@@ -35,7 +35,7 @@ class NetworkService1 {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=breakfast&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
@@ -60,7 +60,7 @@ class NetworkService2 {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=lunch&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
@@ -85,7 +85,7 @@ class NetworkService3 {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=dinner&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
@@ -110,7 +110,7 @@ class NetworkService4 {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=snack&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
@@ -135,7 +135,7 @@ class NetworkService5 {
     //get the uri from an api class constant
     try {
       var url = Uri.parse('https://api.edamam.com/search?q=chicken&app_id='
-          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61');
+          '8bdcfd18&app_key=709d7bbe7a23f56106151b9d1ce37a61&from=0&to=100');
 
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {

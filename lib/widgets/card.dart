@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../models/recipe.dart';
+import '../screens/detail_screen.dart';
 import '../utils/constant.dart';
 
 class Cards extends StatelessWidget {
@@ -14,32 +15,38 @@ class Cards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        print("pressed");
-      },
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 0.02,
-            childAspectRatio: 0.69),
-        cacheExtent: 20,
-        padding: const EdgeInsets.only(bottom: 10),
-        itemCount: recipe?.length,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return Stack(
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, mainAxisSpacing: 0.02, childAspectRatio: 0.69),
+      cacheExtent: 20,
+      padding: const EdgeInsets.only(bottom: 10),
+      itemCount: recipe?.length,
+      shrinkWrap: true,
+      itemBuilder: (BuildContext context, int index) {
+        return InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => DetailScreen(
+                  url: '${recipe![index]!.url}',
+                ),
+              ),
+            );
+          },
+          child: Stack(
             children: [
               Positioned(
                 top: 40,
                 child: Container(
-                  height: 220,
-                  width: 170,
+                  height: 220,//height * 0.4,
+                  width:  170,//width * 0.7,
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       color: KfoodContainerColor,
                       borderRadius:
-                      const BorderRadius.all(Radius.circular(16))),
+                          const BorderRadius.all(Radius.circular(16))),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 60),
                     child: Column(
@@ -102,8 +109,7 @@ class Cards extends StatelessWidget {
                                   color: Colors.white,
                                   fontWeight: FontWeight.normal,
                                   decoration: TextDecoration.none),
-                              '${recipe![index]?.totalTime == 0.0 ? 20 :
-                              (recipe![index]?.totalTime)?.toInt()} min',
+                              '${recipe![index]?.totalTime == 0.0 ? 20 : (recipe![index]?.totalTime)?.toInt()} min',
                             ),
                           ],
                         )
@@ -122,16 +128,16 @@ class Cards extends StatelessWidget {
                     radius: 50,
                     backgroundImage: recipe![index]?.image != null
                         ? NetworkImage(
-                      recipe![index]!.image!,
-                    )
+                            recipe![index]!.image!,
+                          )
                         : null,
                   ),
                 ),
               ),
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
